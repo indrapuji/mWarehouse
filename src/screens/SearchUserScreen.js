@@ -70,7 +70,7 @@ const SearchUserScreen = ({navigation}) => {
               borderBottomColor: 'grey',
             }}
           >
-            <Text>Akbar</Text>
+            <Text style={{color: 'black'}}>Akbar</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={{
@@ -81,7 +81,7 @@ const SearchUserScreen = ({navigation}) => {
               borderBottomColor: 'grey',
             }}
           >
-            <Text>Dennis</Text>
+            <Text style={{color: 'black'}}>Dennis</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={{
@@ -92,7 +92,7 @@ const SearchUserScreen = ({navigation}) => {
               borderBottomColor: 'grey',
             }}
           >
-            <Text>Donny</Text>
+            <Text style={{color: 'black'}}>Donny</Text>
           </TouchableOpacity>
         </View>
       </View>

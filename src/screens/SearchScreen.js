@@ -70,7 +70,7 @@ const SearchScreen = ({navigation}) => {
               borderBottomColor: 'grey',
             }}
           >
-            <Text>Plug</Text>
+            <Text style={{color: 'black'}}>Plug</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={{
@@ -81,7 +81,7 @@ const SearchScreen = ({navigation}) => {
               borderBottomColor: 'grey',
             }}
           >
-            <Text>Prefrom</Text>
+            <Text style={{color: 'black'}}>Prefrom</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={{
@@ -92,7 +92,7 @@ const SearchScreen = ({navigation}) => {
               borderBottomColor: 'grey',
             }}
           >
-            <Text>Pot Lulur</Text>
+            <Text style={{color: 'black'}}>Pot Lulur</Text>
           </TouchableOpacity>
         </View>
       </View>
