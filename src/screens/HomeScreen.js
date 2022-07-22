@@ -28,7 +28,7 @@ const Home = ({navigation}) => {
             Welcome Back,
           </Text>
           <Text style={{fontWeight: '700', fontSize: 30, color: '#3AB4F2'}}>
-            Directur
+            Helper
           </Text>
         </TouchableOpacity>
         <View
@@ -117,7 +117,7 @@ const Home = ({navigation}) => {
             </Text>
           </TouchableOpacity> */}
 
-          {/* <TouchableOpacity
+          <TouchableOpacity
             style={{
               alignItems: 'center',
               width: width - 32,
@@ -168,9 +168,9 @@ const Home = ({navigation}) => {
             >
               Scan Barang
             </Text>
-          </TouchableOpacity> */}
+          </TouchableOpacity>
 
-          <TouchableOpacity
+          {/* <TouchableOpacity
             style={{
               alignItems: 'center',
               width: width - 32,
@@ -195,7 +195,7 @@ const Home = ({navigation}) => {
             >
               Cari Barang
             </Text>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
       </View>
     </SafeAreaView>
