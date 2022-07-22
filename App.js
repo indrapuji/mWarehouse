@@ -3,6 +3,8 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Home from './src/screens/HomeScreen';
 import Login from './src/screens/LoginScreen';
+import Search from './src/screens/SearchScreen';
+import SearchUser from './src/screens/SearchUserScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -18,6 +20,16 @@ const App = () => {
         <Stack.Screen
           name="Home"
           component={Home}
+          options={{title: null, headerShown: false}}
+        />
+        <Stack.Screen
+          name="Search"
+          component={Search}
+          options={{title: null, headerShown: false}}
+        />
+        <Stack.Screen
+          name="SearchUser"
+          component={SearchUser}
           options={{title: null, headerShown: false}}
         />
       </Stack.Navigator>

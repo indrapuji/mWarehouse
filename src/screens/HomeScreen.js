@@ -49,7 +49,7 @@ const Home = ({navigation}) => {
               marginTop: 20,
               flexDirection: 'row',
             }}
-            onPress={() => navigation.navigate('Write')}
+            onPress={() => navigation.navigate('Search')}
           >
             <Image source={findStuff} style={{width: 100, height: 100}} />
             <Text
@@ -75,7 +75,7 @@ const Home = ({navigation}) => {
               marginTop: 20,
               flexDirection: 'row',
             }}
-            onPress={() => navigation.navigate('Inbox')}
+            onPress={() => navigation.navigate('SearchUser')}
           >
             <Image source={findUser} style={{width: 100, height: 100}} />
             <Text
