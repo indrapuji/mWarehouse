@@ -16,7 +16,7 @@ const Home = ({navigation}) => {
   return (
     <SafeAreaView>
       <View style={{marginHorizontal: 16, marginTop: 20}}>
-        <TouchableOpacity>
+        <TouchableOpacity style={{marginBottom: 30}}>
           <Text
             style={{
               fontWeight: '700',
@@ -46,7 +46,7 @@ const Home = ({navigation}) => {
               borderWidth: 1,
               borderRadius: 10,
               borderColor: '#3AB4F2',
-              marginTop: 50,
+              marginTop: 20,
               flexDirection: 'row',
             }}
             onPress={() => navigation.navigate('Write')}
