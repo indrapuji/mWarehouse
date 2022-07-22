@@ -56,7 +56,7 @@ const RegisterScreen = ({navigation}) => {
           </View>
           <ScrollView>
             <View style={{marginHorizontal: 16, marginTop: 20}}>
-              <Text>nama</Text>
+              <Text style={{color: 'black'}}>nama</Text>
               <TextInput
                 placeholder="nama"
                 autoCapitalize="none"
@@ -66,7 +66,7 @@ const RegisterScreen = ({navigation}) => {
               />
             </View>
             <View style={{marginHorizontal: 16, marginTop: 10}}>
-              <Text>Username</Text>
+              <Text style={{color: 'black'}}>Username</Text>
               <TextInput
                 placeholder="username"
                 autoCapitalize="none"
