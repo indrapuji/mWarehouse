@@ -28,7 +28,7 @@ const Home = ({navigation}) => {
             Welcome Back,
           </Text>
           <Text style={{fontWeight: '700', fontSize: 30, color: '#3AB4F2'}}>
-            Helper
+            Admin
           </Text>
         </TouchableOpacity>
         <View
@@ -38,7 +38,7 @@ const Home = ({navigation}) => {
             justifyContent: 'center',
           }}
         >
-          {/* <TouchableOpacity
+          <TouchableOpacity
             style={{
               alignItems: 'center',
               width: width - 32,
@@ -115,9 +115,9 @@ const Home = ({navigation}) => {
             >
               Daftar User
             </Text>
-          </TouchableOpacity> */}
+          </TouchableOpacity>
 
-          <TouchableOpacity
+          {/* <TouchableOpacity
             style={{
               alignItems: 'center',
               width: width - 32,
@@ -168,7 +168,7 @@ const Home = ({navigation}) => {
             >
               Scan Barang
             </Text>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
 
           {/* <TouchableOpacity
             style={{
