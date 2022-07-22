@@ -5,6 +5,7 @@ import Home from './src/screens/HomeScreen';
 import Login from './src/screens/LoginScreen';
 import Search from './src/screens/SearchScreen';
 import SearchUser from './src/screens/SearchUserScreen';
+import Register from './src/screens/RegisterScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -30,6 +31,11 @@ const App = () => {
         <Stack.Screen
           name="SearchUser"
           component={SearchUser}
+          options={{title: null, headerShown: false}}
+        />
+        <Stack.Screen
+          name="Register"
+          component={Register}
           options={{title: null, headerShown: false}}
         />
       </Stack.Navigator>

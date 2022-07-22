@@ -101,7 +101,7 @@ const Home = ({navigation}) => {
               marginTop: 20,
               flexDirection: 'row',
             }}
-            onPress={() => navigation.navigate('Disposisi')}
+            onPress={() => navigation.navigate('Register')}
           >
             <Image source={addUser} style={{width: 100, height: 100}} />
             <Text
