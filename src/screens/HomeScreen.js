@@ -183,7 +183,7 @@ const Home = ({navigation}) => {
             }}
             onPress={() => navigation.navigate('Write')}
           >
-            <Image source={scan} style={{width: 100, height: 100}} />
+            <Image source={findStuff} style={{width: 100, height: 100}} />
             <Text
               style={{
                 color: '#3AB4F2',
@@ -193,7 +193,7 @@ const Home = ({navigation}) => {
                 marginLeft: 20,
               }}
             >
-              Scan Barang
+              Cari Barang
             </Text>
           </TouchableOpacity>
         </View>
