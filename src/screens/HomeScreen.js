@@ -38,7 +38,7 @@ const Home = ({navigation}) => {
             justifyContent: 'center',
           }}
         >
-          <TouchableOpacity
+          {/* <TouchableOpacity
             style={{
               alignItems: 'center',
               width: width - 32,
@@ -115,9 +115,9 @@ const Home = ({navigation}) => {
             >
               Daftar User
             </Text>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
 
-          {/* <TouchableOpacity
+          <TouchableOpacity
             style={{
               alignItems: 'center',
               width: width - 32,
@@ -154,7 +154,7 @@ const Home = ({navigation}) => {
               marginTop: 20,
               flexDirection: 'row',
             }}
-            onPress={() => navigation.navigate('Write')}
+            onPress={() => navigation.navigate('Scan')}
           >
             <Image source={scan} style={{width: 100, height: 100}} />
             <Text
@@ -168,7 +168,7 @@ const Home = ({navigation}) => {
             >
               Scan Barang
             </Text>
-          </TouchableOpacity> */}
+          </TouchableOpacity>
 
           {/* <TouchableOpacity
             style={{
