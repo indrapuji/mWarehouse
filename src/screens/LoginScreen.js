@@ -10,15 +10,54 @@ import {
   Dimensions,
   KeyboardAvoidingView,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
+import axios from 'axios';
+import host from '../utilities/host';
+import {AuthContext} from '../components/Context';
 
 const {height, width} = Dimensions.get('screen');
 
 const Login = ({navigation}) => {
+  const [failed, setFailed] = useState(false);
   const [value, setValue] = useState({
     username: '',
     password: '',
   });
+
+  const {signIn} = useContext(AuthContext);
+
+  const failLogin = () => {
+    setFailed(true);
+    setTimeout(() => {
+      setFailed(false);
+    }, 2000);
+  };
+
+  const loginHanddle = (username, password) => {
+    axios({
+      method: 'post',
+      url: `${host}/users/login`,
+      data: {
+        username: username,
+        password: password,
+      },
+    })
+      .then(({data}) => {
+        signIn(data.access_token, data.user_data.role, data.user_data.nama);
+        // console.log(
+        //   data.access_token,
+        //   data.user_data.role,
+        //   data.user_data.nama,
+        // );
+      })
+      .catch(err => {
+        failLogin();
+        console.log(err);
+      })
+      .finally(() => {
+        console.log('Finally');
+      });
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -37,6 +76,11 @@ const Login = ({navigation}) => {
           </View>
 
           <View style={{flex: 1, justifyContent: 'flex-end'}}>
+            {failed && (
+              <View style={{marginBottom: 10}}>
+                <Text style={{color: 'red'}}>Username atau Password salah</Text>
+              </View>
+            )}
             <TextInput
               placeholder="Enter Your Username"
               autoCapitalize="none"
@@ -54,7 +98,7 @@ const Login = ({navigation}) => {
             />
             <TouchableOpacity
               style={styles.bottonSize}
-              onPress={() => navigation.navigate('Home')}
+              onPress={() => loginHanddle(value.username, value.password)}
             >
               <Text style={styles.textButton}>Login</Text>
             </TouchableOpacity>
