@@ -7,6 +7,8 @@ import {
   Image,
   TextInput,
   Dimensions,
+  Modal,
+  Pressable,
 } from 'react-native';
 import React, {useState} from 'react';
 import {leftArrow} from '../assets';
@@ -19,18 +21,54 @@ const {width} = Dimensions.get('screen');
 const SearchUserScreen = ({navigation}) => {
   const [searchItem, setSearchItem] = useState();
   const [dataBarang, setDataBarang] = useState();
+  const [modalVisible, setModalVisible] = useState(false);
 
   const handleSearch = async () => {
     try {
       setDataBarang('');
+      console.log(searchItem);
       const token = await AsyncStorage.getItem('userToken');
       const {data} = await axios({
         method: 'GET',
-        url: `${host}/users/list?search=${searchItem}`,
+        url: `${host}/users/list?search=${searchItem.searchItem}`,
         headers: {token},
       });
-      setDataBarang(data);
-      console.log(data);
+      setDataBarang(data.data[0]);
+      console.log(data.data[0]);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleReset = async () => {
+    try {
+      const token = await AsyncStorage.getItem('userToken');
+      await axios({
+        method: 'GET',
+        url: `${host}/users/reset-password`,
+        headers: {token},
+      });
+      setModalVisible(true);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleCloseModal = () => {
+    setModalVisible(false);
+    handleSearch();
+  };
+
+  const handleDelete = async idUser => {
+    try {
+      const token = await AsyncStorage.getItem('userToken');
+      await axios({
+        method: 'DELETE',
+        url: `${host}/users/delete/${idUser}`,
+        headers: {token},
+      });
+      setModalVisible(true);
+      handleSearch();
     } catch (error) {
       console.log(error);
     }
@@ -66,6 +104,28 @@ const SearchUserScreen = ({navigation}) => {
             </Text>
           </View>
         </View>
+        <Modal
+          animationType="slide"
+          transparent={true}
+          visible={modalVisible}
+          onRequestClose={() => {
+            setModalVisible(false);
+          }}
+        >
+          <View style={styles.centeredView}>
+            <View style={styles.modalView}>
+              <Text style={styles.modalText}>Sukses</Text>
+              <View>
+                <Pressable
+                  style={[styles.button, styles.buttonClose]}
+                  onPress={() => handleCloseModal()}
+                >
+                  <Text style={styles.textStyle}>Done</Text>
+                </Pressable>
+              </View>
+            </View>
+          </View>
+        </Modal>
 
         <TextInput
           placeholder="Nama User"
@@ -84,10 +144,13 @@ const SearchUserScreen = ({navigation}) => {
           <View>
             <View style={{flexDirection: 'row', marginBottom: 20}}>
               <View style={{flex: 1}}>
-                <Text style={{fontWeight: 'bold'}}>Nama Barang</Text>
+                <Text style={{fontWeight: 'bold'}}>Nama</Text>
               </View>
               <View style={{flex: 1}}>
-                <Text style={{fontWeight: 'bold'}}>Jumlah Barang</Text>
+                <Text style={{fontWeight: 'bold'}}>Role</Text>
+              </View>
+              <View style={{flex: 1}}>
+                <Text style={{fontWeight: 'bold'}}>Action</Text>
               </View>
             </View>
             <View style={{flexDirection: 'row'}}>
@@ -95,7 +158,27 @@ const SearchUserScreen = ({navigation}) => {
                 <Text style={{color: 'black'}}>{dataBarang.nama}</Text>
               </View>
               <View style={{flex: 1}}>
-                <Text style={{color: 'black'}}>{dataBarang.total}</Text>
+                <Text style={{color: 'black'}}>{dataBarang.role}</Text>
+              </View>
+              <View
+                style={{
+                  flex: 1,
+                  flexDirection: 'row',
+                  justifyContent: 'space-evenly',
+                }}
+              >
+                <TouchableOpacity
+                  style={{backgroundColor: 'yellow', borderRadius: 5}}
+                  onPress={() => handleReset()}
+                >
+                  <Text style={{padding: 5}}>Reset</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={{backgroundColor: 'red', borderRadius: 5}}
+                  onPress={() => handleDelete(dataBarang.id)}
+                >
+                  <Text style={{padding: 5}}>Delete</Text>
+                </TouchableOpacity>
               </View>
             </View>
           </View>
@@ -131,5 +214,48 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 15,
     fontWeight: '700',
+  },
+  centeredView: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 22,
+  },
+  modalView: {
+    width: width - 50,
+    margin: 20,
+    backgroundColor: 'white',
+    borderRadius: 20,
+    padding: 35,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  button: {
+    borderRadius: 10,
+    padding: 10,
+    elevation: 2,
+    marginHorizontal: 10,
+  },
+  buttonOpen: {
+    backgroundColor: '#F194FF',
+  },
+  buttonClose: {
+    backgroundColor: '#2196F3',
+  },
+  textStyle: {
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: 'center',
   },
 });
