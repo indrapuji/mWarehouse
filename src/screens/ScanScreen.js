@@ -11,7 +11,7 @@ import React from 'react';
 import {leftArrow} from '../assets';
 
 const {width} = Dimensions.get('screen');
-const ScanScreen = () => {
+const ScanScreen = ({navigation}) => {
   return (
     <SafeAreaView>
       <View style={{marginLeft: 16, marginRight: 16}}>
