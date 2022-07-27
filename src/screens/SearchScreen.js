@@ -44,7 +44,7 @@ const SearchScreen = ({navigation}) => {
       const token = await AsyncStorage.getItem('userToken');
       await axios({
         method: 'PUT',
-        url: `${host}/masuk/${idBarang}`,
+        url: `${host}/barang/masuk/${idBarang}`,
         headers: {token},
       });
       handleSearch();
@@ -54,11 +54,12 @@ const SearchScreen = ({navigation}) => {
   };
 
   const handleKeluar = async idBarang => {
+    console.log(idBarang);
     try {
       const token = await AsyncStorage.getItem('userToken');
       await axios({
         method: 'PUT',
-        url: `${host}/keluar/${idBarang}`,
+        url: `${host}/barang/keluar/${idBarang}`,
         headers: {token},
       });
       handleSearch();
