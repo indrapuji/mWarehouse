@@ -11,6 +11,9 @@ import {
 } from 'react-native';
 import React, {useState} from 'react';
 import {leftArrow} from '../assets';
+import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import host from '../utilities/host';
 
 const {height, width} = Dimensions.get('screen');
 
@@ -20,6 +23,21 @@ const RegisterScreen = ({navigation}) => {
     username: '',
     role: 'helper',
   });
+
+  const registerUser = async () => {
+    try {
+      const token = await AsyncStorage.getItem('userToken');
+      await axios({
+        method: 'POST',
+        url: host + '/users/register',
+        data: value,
+        headers: {token},
+      });
+      console.log('sukses');
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <SafeAreaView style={{flex: 1}}>
       <View style={{flexDirection: 'column', flex: 1}}>
@@ -61,8 +79,8 @@ const RegisterScreen = ({navigation}) => {
                 placeholder="nama"
                 autoCapitalize="none"
                 style={styles.inputSize}
-                onChangeText={text => setValue({...value, kepada: text})}
-                value={value.kepada}
+                onChangeText={text => setValue({...value, nama: text})}
+                value={value.nama}
               />
             </View>
             <View style={{marginHorizontal: 16, marginTop: 10}}>
@@ -71,8 +89,8 @@ const RegisterScreen = ({navigation}) => {
                 placeholder="username"
                 autoCapitalize="none"
                 style={styles.inputSize}
-                onChangeText={text => setValue({...value, subject: text})}
-                value={value.subject}
+                onChangeText={text => setValue({...value, username: text})}
+                value={value.username}
               />
             </View>
           </ScrollView>
@@ -88,6 +106,7 @@ const RegisterScreen = ({navigation}) => {
               justifyContent: 'center',
               backgroundColor: 'green',
             }}
+            onPress={() => registerUser()}
           >
             <Text style={{fontSize: 20, fontWeight: '700', color: 'white'}}>
               Daftar

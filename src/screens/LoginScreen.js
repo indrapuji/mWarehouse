@@ -44,11 +44,6 @@ const Login = ({navigation}) => {
     })
       .then(({data}) => {
         signIn(data.access_token, data.user_data.role, data.user_data.nama);
-        // console.log(
-        //   data.access_token,
-        //   data.user_data.role,
-        //   data.user_data.nama,
-        // );
       })
       .catch(err => {
         failLogin();
@@ -122,6 +117,7 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     fontSize: 25,
     color: 'red',
+    textAlign: 'center',
     marginBottom: 50,
   },
   tinyLogo: {

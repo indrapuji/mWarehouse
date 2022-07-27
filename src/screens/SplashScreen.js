@@ -18,18 +18,15 @@ const SplashScreen = () => {
       <StatusBar backgroundColor="#3AB4F2" />
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        style={{flex: 1}}
       >
-        <View style={{flex: 1, alignItems: 'center'}}>
-          <View style={{flex: 1, marginTop: 100}}>
+        <View style={{alignItems: 'center'}}>
+          <View>
             <Text style={styles.title}>M-Warehouse</Text>
             <Image
               style={styles.tinyLogo}
               source={require('../assets/employee.png')}
             />
           </View>
-
-          <View style={{flex: 1, justifyContent: 'flex-end'}}></View>
         </View>
       </KeyboardAvoidingView>
     </SafeAreaView>
@@ -50,6 +47,7 @@ const styles = StyleSheet.create({
     fontSize: 25,
     color: 'red',
     marginBottom: 50,
+    textAlign: 'center',
   },
   tinyLogo: {
     width: 200,
