@@ -167,12 +167,12 @@ const SearchUserScreen = ({navigation}) => {
                   justifyContent: 'space-evenly',
                 }}
               >
-                <TouchableOpacity
+                {/* <TouchableOpacity
                   style={{backgroundColor: 'yellow', borderRadius: 5}}
                   onPress={() => handleReset()}
                 >
                   <Text style={{padding: 5}}>Reset</Text>
-                </TouchableOpacity>
+                </TouchableOpacity> */}
                 <TouchableOpacity
                   style={{backgroundColor: 'red', borderRadius: 5}}
                   onPress={() => handleDelete(dataBarang.id)}
