@@ -10,11 +10,31 @@ import {
 } from 'react-native';
 import React, {useState} from 'react';
 import {leftArrow} from '../assets';
+import axios from 'axios';
+import host from '../utilities/host';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const {width} = Dimensions.get('screen');
 
-const SearchUserScreen = ({navigation}) => {
+const SearchScreen = ({navigation}) => {
   const [searchItem, setSearchItem] = useState();
+  const [dataBarang, setDataBarang] = useState();
+
+  const handleSearch = async () => {
+    try {
+      setDataBarang('');
+      const token = await AsyncStorage.getItem('userToken');
+      const {data} = await axios({
+        method: 'GET',
+        url: `${host}/users/list?search=${searchItem.searchItem}`,
+        headers: {token},
+      });
+      setDataBarang(data[0]);
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <SafeAreaView>
@@ -48,7 +68,7 @@ const SearchUserScreen = ({navigation}) => {
         </View>
 
         <TextInput
-          placeholder="Nama Barang"
+          placeholder="Nama User"
           autoCapitalize="none"
           style={styles.inputSize}
           onChangeText={text => setSearchItem({searchItem: text})}
@@ -56,51 +76,36 @@ const SearchUserScreen = ({navigation}) => {
         />
         <TouchableOpacity
           style={styles.bottonSize}
-          onPress={() => navigation.navigate('Home')}
+          onPress={() => handleSearch()}
         >
           <Text style={styles.textButton}>Cari</Text>
         </TouchableOpacity>
-        <View>
-          <TouchableOpacity
-            style={{
-              height: 30,
-              borderBottomWidth: 1,
-              justifyContent: 'center',
-              width: width - 32,
-              borderBottomColor: 'grey',
-            }}
-          >
-            <Text style={{color: 'black'}}>Akbar</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={{
-              height: 30,
-              borderBottomWidth: 1,
-              justifyContent: 'center',
-              width: width - 32,
-              borderBottomColor: 'grey',
-            }}
-          >
-            <Text style={{color: 'black'}}>Dennis</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={{
-              height: 30,
-              borderBottomWidth: 1,
-              justifyContent: 'center',
-              width: width - 32,
-              borderBottomColor: 'grey',
-            }}
-          >
-            <Text style={{color: 'black'}}>Donny</Text>
-          </TouchableOpacity>
-        </View>
+        {dataBarang && (
+          <View>
+            <View style={{flexDirection: 'row', marginBottom: 20}}>
+              <View style={{flex: 1}}>
+                <Text style={{fontWeight: 'bold'}}>Nama Barang</Text>
+              </View>
+              <View style={{flex: 1}}>
+                <Text style={{fontWeight: 'bold'}}>Jumlah Barang</Text>
+              </View>
+            </View>
+            <View style={{flexDirection: 'row'}}>
+              <View style={{flex: 1}}>
+                <Text style={{color: 'black'}}>{dataBarang.nama}</Text>
+              </View>
+              <View style={{flex: 1}}>
+                <Text style={{color: 'black'}}>{dataBarang.total}</Text>
+              </View>
+            </View>
+          </View>
+        )}
       </View>
     </SafeAreaView>
   );
 };
 
-export default SearchUserScreen;
+export default SearchScreen;
 
 const styles = StyleSheet.create({
   inputSize: {
@@ -117,7 +122,6 @@ const styles = StyleSheet.create({
     width: width - 36,
     height: 50,
     borderRadius: 10,
-    // marginTop: 30,
     marginBottom: 30,
     backgroundColor: 'blue',
     justifyContent: 'center',
