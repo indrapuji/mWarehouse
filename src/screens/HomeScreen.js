@@ -28,9 +28,12 @@ const Home = ({navigation}) => {
   const getData = async () => {
     try {
       console.log('masuk bos');
-      const value = await AsyncStorage.getItem('userRole');
-      if (value !== null) {
-        setRole(value);
+      const Role = await AsyncStorage.getItem('userRole');
+      const Token = await AsyncStorage.getItem('userToken');
+      const Nama = await AsyncStorage.getItem('userName');
+      if (Role !== null) {
+        setRole(Role);
+        console.log(Role, Token, Nama);
       }
     } catch (e) {
       console.log('error');
@@ -61,7 +64,7 @@ const Home = ({navigation}) => {
             justifyContent: 'center',
           }}
         >
-          {role === 'Admin' ? (
+          {role === 'admin' ? (
             <>
               <TouchableOpacity
                 style={{
@@ -142,7 +145,7 @@ const Home = ({navigation}) => {
                 </Text>
               </TouchableOpacity>
             </>
-          ) : role === 'Helper' ? (
+          ) : role === 'helper' ? (
             <>
               <TouchableOpacity
                 style={{

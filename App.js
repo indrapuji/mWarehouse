@@ -64,7 +64,7 @@ const App = ({navigation}) => {
 
   const authContext = useMemo(
     () => ({
-      signIn: async (userToken, userName, userRole) => {
+      signIn: async (userToken, userRole, userName) => {
         try {
           await AsyncStorage.setItem('userToken', userToken);
           await AsyncStorage.setItem('userName', userName);
