@@ -27,7 +27,7 @@ const SearchScreen = ({navigation}) => {
       const token = await AsyncStorage.getItem('userToken');
       const {data} = await axios({
         method: 'GET',
-        url: `${host}/barang/list?search=${searchItem}`,
+        url: `${host}/barang/list?search=${searchItem.searchItem}`,
         headers: {token},
       });
       setDataBarang(data[0]);

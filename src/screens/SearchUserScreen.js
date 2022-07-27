@@ -16,7 +16,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const {width} = Dimensions.get('screen');
 
-const SearchScreen = ({navigation}) => {
+const SearchUserScreen = ({navigation}) => {
   const [searchItem, setSearchItem] = useState();
   const [dataBarang, setDataBarang] = useState();
 
@@ -26,10 +26,10 @@ const SearchScreen = ({navigation}) => {
       const token = await AsyncStorage.getItem('userToken');
       const {data} = await axios({
         method: 'GET',
-        url: `${host}/users/list?search=${searchItem.searchItem}`,
+        url: `${host}/users/list?search=${searchItem}`,
         headers: {token},
       });
-      setDataBarang(data[0]);
+      setDataBarang(data);
       console.log(data);
     } catch (error) {
       console.log(error);
@@ -105,7 +105,7 @@ const SearchScreen = ({navigation}) => {
   );
 };
 
-export default SearchScreen;
+export default SearchUserScreen;
 
 const styles = StyleSheet.create({
   inputSize: {
