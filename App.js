@@ -8,6 +8,7 @@ import SearchUser from './src/screens/SearchUserScreen';
 import Register from './src/screens/RegisterScreen';
 import SplashScreen from './src/screens/SplashScreen';
 import Scan from './src/screens/ScanScreen';
+import Konfirmasi from './src/screens/KonfirmasiScreen';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {AuthContext} from './src/components/Context';
 
@@ -144,6 +145,11 @@ const App = ({navigation}) => {
               <Stack.Screen
                 name="Scan"
                 component={Scan}
+                options={{title: null, headerShown: false}}
+              />
+              <Stack.Screen
+                name="Konfirmasi"
+                component={Konfirmasi}
                 options={{title: null, headerShown: false}}
               />
             </>

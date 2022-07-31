@@ -89,7 +89,7 @@ const Home = ({navigation}) => {
                     marginLeft: 20,
                   }}
                 >
-                  Cari Barang
+                  Daftar Barang
                 </Text>
               </TouchableOpacity>
               <TouchableOpacity
@@ -115,7 +115,7 @@ const Home = ({navigation}) => {
                     marginLeft: 20,
                   }}
                 >
-                  Cari User
+                  Daftar User
                 </Text>
               </TouchableOpacity>
               <TouchableOpacity
@@ -141,7 +141,7 @@ const Home = ({navigation}) => {
                     marginLeft: 20,
                   }}
                 >
-                  Daftar User
+                  Register User
                 </Text>
               </TouchableOpacity>
             </>
@@ -170,7 +170,7 @@ const Home = ({navigation}) => {
                     marginLeft: 20,
                   }}
                 >
-                  Cari Barang
+                  Daftar Barang
                 </Text>
               </TouchableOpacity>
               <TouchableOpacity
@@ -225,7 +225,33 @@ const Home = ({navigation}) => {
                     marginLeft: 20,
                   }}
                 >
-                  Cari Barang
+                  Daftar Barang
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={{
+                  alignItems: 'center',
+                  width: width - 32,
+                  height: 120,
+                  borderWidth: 1,
+                  borderRadius: 10,
+                  borderColor: '#3AB4F2',
+                  marginTop: 20,
+                  flexDirection: 'row',
+                }}
+                onPress={() => navigation.navigate('Konfirmasi')}
+              >
+                <Image source={findStuff} style={{width: 100, height: 100}} />
+                <Text
+                  style={{
+                    color: '#3AB4F2',
+                    fontSize: 30,
+                    fontWeight: '700',
+                    marginTop: 10,
+                    marginLeft: 20,
+                  }}
+                >
+                  Konfirmasi
                 </Text>
               </TouchableOpacity>
             </>

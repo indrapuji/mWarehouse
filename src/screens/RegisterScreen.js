@@ -61,7 +61,7 @@ const RegisterScreen = ({navigation}) => {
         >
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
-              <Text style={styles.modalText}>Register Helper Sukses</Text>
+              <Text style={styles.modalText}>Register User Sukses</Text>
               <View>
                 <Pressable
                   style={[styles.button, styles.buttonClose]}
@@ -99,7 +99,7 @@ const RegisterScreen = ({navigation}) => {
                 <Text
                   style={{fontWeight: '700', fontSize: 20, color: '#3AB4F2'}}
                 >
-                  Register Helper
+                  Register User
                 </Text>
               </View>
             </View>
