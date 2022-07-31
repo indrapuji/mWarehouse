@@ -9,6 +9,7 @@ import Register from './src/screens/RegisterScreen';
 import SplashScreen from './src/screens/SplashScreen';
 import Scan from './src/screens/ScanScreen';
 import Konfirmasi from './src/screens/KonfirmasiScreen';
+import ChangePassword from './src/screens/ChangePasswordScreen';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {AuthContext} from './src/components/Context';
 
@@ -150,6 +151,11 @@ const App = ({navigation}) => {
               <Stack.Screen
                 name="Konfirmasi"
                 component={Konfirmasi}
+                options={{title: null, headerShown: false}}
+              />
+              <Stack.Screen
+                name="ChangePassword"
+                component={ChangePassword}
                 options={{title: null, headerShown: false}}
               />
             </>
