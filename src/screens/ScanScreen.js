@@ -19,6 +19,9 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import QRCodeScanner from 'react-native-qrcode-scanner';
 import { RNCamera } from 'react-native-camera';
 
+import QRCodeScanner from 'react-native-qrcode-scanner';
+import {RNCamera} from 'react-native-camera';
+
 const {width} = Dimensions.get('screen');
 const ScanScreen = ({navigation}) => {
   const [dataBarang, setDataBarang] = useState({});
@@ -119,11 +122,11 @@ const ScanScreen = ({navigation}) => {
       scanner.reactivate();
     }
   };
-
+  
   return (
     <SafeAreaView>
       <View style={{marginLeft: 16, marginRight: 16}}>
-        <View
+        {/* <View
           style={{
             position: 'relative',
             justifyContent: 'center',
