@@ -15,10 +15,6 @@ import axios from 'axios';
 import host from '../utilities/host';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-
-import QRCodeScanner from 'react-native-qrcode-scanner';
-import { RNCamera } from 'react-native-camera';
-
 import QRCodeScanner from 'react-native-qrcode-scanner';
 import {RNCamera} from 'react-native-camera';
 
@@ -126,7 +122,7 @@ const ScanScreen = ({navigation}) => {
   return (
     <SafeAreaView>
       <View style={{marginLeft: 16, marginRight: 16}}>
-        {/* <View
+        <View
           style={{
             position: 'relative',
             justifyContent: 'center',
