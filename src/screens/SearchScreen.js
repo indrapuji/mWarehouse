@@ -316,7 +316,7 @@ const SearchScreen = ({ navigation }) => {
           </TouchableOpacity>
           <View>
             <Text style={{ fontWeight: '700', fontSize: 20, color: '#3AB4F2' }}>
-              Daftar Barang
+              Menu Barang
             </Text>
           </View>
         </View>

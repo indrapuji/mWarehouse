@@ -18,9 +18,10 @@
 		02F3A5DB00A84C45BBAAE959 /* employee.png in Resources */ = {isa = PBXBuildFile; fileRef = A7510D0D79F2482781E23EBC /* employee.png */; };
 		D6AB35200BD64CBDBBC0BB42 /* findStuff.png in Resources */ = {isa = PBXBuildFile; fileRef = 496CB45981F84024AB054633 /* findStuff.png */; };
 		1DC3A9880E964B98A8BC1B77 /* findUser.png in Resources */ = {isa = PBXBuildFile; fileRef = C1800667239B4B94BBC8443E /* findUser.png */; };
-		B31A6111619E40B0BA94B3A4 /* index.js in Resources */ = {isa = PBXBuildFile; fileRef = 403EC732460442018FBC3425 /* index.js */; };
 		1A2ADC2176144C988A64667D /* leftArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 4925187082CA4FBB9508AB2A /* leftArrow.png */; };
 		9AF36316109D4C7ABCF74821 /* scan.png in Resources */ = {isa = PBXBuildFile; fileRef = 74553C2293024EDDA4E362FC /* scan.png */; };
+		47C6FD8D5655429DA006323E /* index.js in Resources */ = {isa = PBXBuildFile; fileRef = 90157106D8A545AAA355F7C3 /* index.js */; };
+		3581189F351946C7AE8AC50A /* logout.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A4544692B0441C3BFAF56BB /* logout.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,9 +56,10 @@
 		A7510D0D79F2482781E23EBC /* employee.png */ = {isa = PBXFileReference; name = "employee.png"; path = "../src/assets/employee.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		496CB45981F84024AB054633 /* findStuff.png */ = {isa = PBXFileReference; name = "findStuff.png"; path = "../src/assets/findStuff.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		C1800667239B4B94BBC8443E /* findUser.png */ = {isa = PBXFileReference; name = "findUser.png"; path = "../src/assets/findUser.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		403EC732460442018FBC3425 /* index.js */ = {isa = PBXFileReference; name = "index.js"; path = "../src/assets/index.js"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		4925187082CA4FBB9508AB2A /* leftArrow.png */ = {isa = PBXFileReference; name = "leftArrow.png"; path = "../src/assets/leftArrow.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		74553C2293024EDDA4E362FC /* scan.png */ = {isa = PBXFileReference; name = "scan.png"; path = "../src/assets/scan.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		90157106D8A545AAA355F7C3 /* index.js */ = {isa = PBXFileReference; name = "index.js"; path = "../src/assets/index.js"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		0A4544692B0441C3BFAF56BB /* logout.png */ = {isa = PBXFileReference; name = "logout.png"; path = "../src/assets/logout.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,9 +172,10 @@
 				A7510D0D79F2482781E23EBC /* employee.png */,
 				496CB45981F84024AB054633 /* findStuff.png */,
 				C1800667239B4B94BBC8443E /* findUser.png */,
-				403EC732460442018FBC3425 /* index.js */,
 				4925187082CA4FBB9508AB2A /* leftArrow.png */,
 				74553C2293024EDDA4E362FC /* scan.png */,
+				90157106D8A545AAA355F7C3 /* index.js */,
+				0A4544692B0441C3BFAF56BB /* logout.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -278,9 +281,10 @@
 				02F3A5DB00A84C45BBAAE959 /* employee.png in Resources */,
 				D6AB35200BD64CBDBBC0BB42 /* findStuff.png in Resources */,
 				1DC3A9880E964B98A8BC1B77 /* findUser.png in Resources */,
-				B31A6111619E40B0BA94B3A4 /* index.js in Resources */,
 				1A2ADC2176144C988A64667D /* leftArrow.png in Resources */,
 				9AF36316109D4C7ABCF74821 /* scan.png in Resources */,
+				47C6FD8D5655429DA006323E /* index.js in Resources */,
+				3581189F351946C7AE8AC50A /* logout.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
