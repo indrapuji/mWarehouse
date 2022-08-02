@@ -19,11 +19,15 @@
     },
     {
       "path": "src/assets/index.js",
-      "sha1": "0494592c0357098530cef01161550c1dac7c83da"
+      "sha1": "7135a48cdbb515e78a2742678ca870d898b99882"
     },
     {
       "path": "src/assets/leftArrow.png",
       "sha1": "9f4c1225fb3fca46efe672d8cc6e3a818d22423a"
+    },
+    {
+      "path": "src/assets/logout.png",
+      "sha1": "8e31bf7d9d8c345ad0db7d5a50166fe806a17aa7"
     },
     {
       "path": "src/assets/scan.png",
