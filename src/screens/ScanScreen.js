@@ -17,6 +17,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import QRCodeScanner from 'react-native-qrcode-scanner';
 import {RNCamera} from 'react-native-camera';
+import { formatNumber } from '../utilities/formatNumber';
+import Counter from "react-native-counters";
 
 const {width} = Dimensions.get('screen');
 const ScanScreen = ({navigation}) => {
@@ -26,6 +28,7 @@ const ScanScreen = ({navigation}) => {
   const [modalVisibleConfimationKeluar, setModalVisibleConfimationKeluar] = useState(false);
   const [tambah, setTambah] = useState(0);
   const [modalVisibleError, setModalVisibleError] = useState(false);
+  const [jumlahBarang, setJumlahBarang] = useState(1);
 
   const onSuccess = async (e) => {
     try {
@@ -63,6 +66,9 @@ const ScanScreen = ({navigation}) => {
         method: 'PUT',
         url: `${host}/barang/masuk/${tambah}`,
         headers: { token },
+        data: {
+          jumlah: jumlahBarang,
+        }
       });
       
     } catch (error) {
@@ -85,6 +91,9 @@ const ScanScreen = ({navigation}) => {
         method: 'PUT',
         url: `${host}/barang/keluar/${tambah}`,
         headers: { token },
+        data: {
+          jumlah: jumlahBarang,
+        }
       });
       
     } catch (error) {
@@ -118,6 +127,10 @@ const ScanScreen = ({navigation}) => {
       scanner.reactivate();
     }
   };
+
+  const handleCounter = (data) => {
+    setJumlahBarang(data);
+  }
   
   return (
     <SafeAreaView>
@@ -165,7 +178,8 @@ const ScanScreen = ({navigation}) => {
             <View style={styles.centeredView}>
               <View style={styles.modalView}>
                 <Text style={styles.modalText}>Apakah Anda Yakin Ingin Mengeluarkan Barang?</Text>
-                <View style={{flexDirection: 'row'}}>
+                <Counter start={1} min={1} onChange={(e) => handleCounter(e)} />
+                <View style={{flexDirection: 'row', marginTop: 20}}>
                   <Pressable
                     style={[styles.button, styles.confimButton]}
                     onPress={() => handleKeluar()}
@@ -194,7 +208,8 @@ const ScanScreen = ({navigation}) => {
             <View style={styles.centeredView}>
               <View style={styles.modalView}>
                 <Text style={styles.modalText}>Apakah Anda Yakin Ingin Memasukan Barang?</Text>
-                <View style={{flexDirection: 'row'}}>
+                <Counter start={1} min={1} onChange={(e) => handleCounter(e)} />
+                <View style={{flexDirection: 'row', marginTop: 20}}>
                   <Pressable
                     style={[styles.button, styles.confimButton]}
                     onPress={() => handleMasuk()}
@@ -233,11 +248,11 @@ const ScanScreen = ({navigation}) => {
                 </View>
                 <Text style={styles.modalText}>{dataBarang?.nama} </Text>
                 <Text style={styles.modalText}>Jumlah Masuk: </Text>
-                <Text style={styles.modalText}>{dataBarang?.jumlah_masuk} </Text>
+                <Text style={styles.modalText}>{formatNumber(dataBarang?.jumlah_masuk)} </Text>
                 <Text style={styles.modalText}>Jumlah Keluar:  </Text>
-                <Text style={styles.modalText}>{dataBarang?.jumlah_keluar} </Text>
+                <Text style={styles.modalText}>{formatNumber(dataBarang?.jumlah_keluar)} </Text>
                 <Text style={styles.modalText}>Total:  </Text>
-                <Text style={styles.modalText}>{dataBarang?.total} </Text>
+                <Text style={styles.modalText}>{formatNumber(dataBarang?.total)} </Text>
                 <Text style={styles.modalText}>Action Barang:</Text>
                 <View style={{flexDirection: 'row'}}>
                   <Pressable

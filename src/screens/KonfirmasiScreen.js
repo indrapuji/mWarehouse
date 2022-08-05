@@ -15,6 +15,7 @@ import {
   import axios from 'axios';
   import host from '../utilities/host';
   import AsyncStorage from '@react-native-async-storage/async-storage';
+  import { formatNumber } from '../utilities/formatNumber';
   
   const { width } = Dimensions.get('screen');
   
@@ -154,7 +155,7 @@ import {
                 <Text style={{ color: 'black' }}>{barang.dataBarang.nama}</Text>
               </View>
               <View style={{ flex: 1, flexDirection: 'column' }}>
-                <Text style={{ color: 'black' }}>{barang.dataBarang.total}</Text>
+                <Text style={{ color: 'black' }}>{formatNumber(barang.dataBarang.total)}</Text>
               </View>
               <View
                 style={{
@@ -276,11 +277,11 @@ import {
                 </View>
                 <Text style={styles.modalText}>{barangModal.dataBarang?.nama} </Text>
                 <Text style={styles.modalText}>Jumlah Masuk: </Text>
-                <Text style={styles.modalText}>{barangModal.dataBarang?.jumlah_masuk} </Text>
+                <Text style={styles.modalText}>{formatNumber(barangModal.dataBarang?.jumlah_masuk)} </Text>
                 <Text style={styles.modalText}>Jumlah Keluar:  </Text>
-                <Text style={styles.modalText}>{barangModal.dataBarang?.jumlah_keluar} </Text>
+                <Text style={styles.modalText}>{formatNumber(barangModal.dataBarang?.jumlah_keluar)} </Text>
                 <Text style={styles.modalText}>Total:  </Text>
-                <Text style={styles.modalText}>{barangModal.dataBarang?.total} </Text>
+                <Text style={styles.modalText}>{formatNumber(barangModal.dataBarang?.total)} </Text>
                 <Text style={{...styles.modalText, fontWeight: 'bold'}}>Action Konfirmasi Barang:  </Text>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-evenly' }}>
                     <Text style={{...styles.modalText, marginRight: 25}}>Jumlah Masuk</Text>

@@ -15,6 +15,8 @@ import { leftArrow } from '../assets';
 import axios from 'axios';
 import host from '../utilities/host';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { formatNumber } from '../utilities/formatNumber'
+import Counter from "react-native-counters";
 
 const { width } = Dimensions.get('screen');
 
@@ -27,6 +29,7 @@ const SearchScreen = ({ navigation }) => {
   const [showData, setShowData] = useState(false);
   const [barangModal, setBarangModal] = useState({});
   const [role, setRole] = useState('admin');
+  const [jumlahBarang, setJumlahBarang] = useState(1);
 
   const [tambah, setTambah] = useState(0);
 
@@ -85,6 +88,9 @@ const SearchScreen = ({ navigation }) => {
         method: 'PUT',
         url: `${host}/barang/masuk/${tambah}`,
         headers: { token },
+        data: {
+          jumlah: jumlahBarang,
+        }
       });
       searchItem.searchItem ? handleSearch() : handleApi();
       
@@ -106,6 +112,9 @@ const SearchScreen = ({ navigation }) => {
         method: 'PUT',
         url: `${host}/barang/keluar/${tambah}`,
         headers: { token },
+        data: {
+          jumlah: jumlahBarang,
+        }
       });
       searchItem.searchItem ? handleSearch() : handleApi();
       
@@ -147,7 +156,7 @@ const SearchScreen = ({ navigation }) => {
               <Text style={{ color: 'black' }}>{barang.nama}</Text>
             </View>
             <View style={{ flex: 1 }}>
-              <Text style={{ color: 'black' }}>{barang.total}</Text>
+              <Text style={{ color: 'black' }}>{formatNumber(barang.total)}</Text>
             </View>
             <View
               style={{
@@ -175,6 +184,10 @@ const SearchScreen = ({ navigation }) => {
     })
   }
 
+  const handleCounter = (data) => {
+    setJumlahBarang(data);
+  }
+
   return (
     <SafeAreaView>
       <View style={{ marginLeft: 16 }}>
@@ -189,7 +202,8 @@ const SearchScreen = ({ navigation }) => {
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
               <Text style={styles.modalText}>Apakah Anda Yakin Ingin Mengeluarkan Barang?</Text>
-              <View style={{flexDirection: 'row'}}>
+              <Counter start={1} min={1} onChange={(e) => handleCounter(e)} />
+              <View style={{flexDirection: 'row', marginTop: 20}}>
                 <Pressable
                   style={[styles.button, styles.confimButton]}
                   onPress={() => handleKeluar()}
@@ -218,7 +232,8 @@ const SearchScreen = ({ navigation }) => {
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
               <Text style={styles.modalText}>Apakah Anda Yakin Ingin Memasukan Barang?</Text>
-              <View style={{flexDirection: 'row'}}>
+              <Counter start={1} min={1} onChange={(e) => handleCounter(e)} />
+              <View style={{flexDirection: 'row', marginTop: 20}}>
                 <Pressable
                   style={[styles.button, styles.confimButton]}
                   onPress={() => handleMasuk()}
@@ -257,11 +272,11 @@ const SearchScreen = ({ navigation }) => {
               </View>
               <Text style={styles.modalText}>{barangModal?.nama} </Text>
               <Text style={styles.modalText}>Jumlah Masuk: </Text>
-              <Text style={styles.modalText}>{barangModal?.jumlah_masuk} </Text>
+              <Text style={styles.modalText}>{formatNumber(barangModal?.jumlah_masuk)} </Text>
               <Text style={styles.modalText}>Jumlah Keluar:  </Text>
-              <Text style={styles.modalText}>{barangModal?.jumlah_keluar} </Text>
+              <Text style={styles.modalText}>{formatNumber(barangModal?.jumlah_keluar)} </Text>
               <Text style={styles.modalText}>Total:  </Text>
-              <Text style={styles.modalText}>{barangModal?.total} </Text>
+              <Text style={styles.modalText}>{formatNumber(barangModal?.total)} </Text>
               {
                 role !== 'direktur' ?(
                 <>

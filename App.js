@@ -10,6 +10,7 @@ import SplashScreen from './src/screens/SplashScreen';
 import Scan from './src/screens/ScanScreen';
 import Konfirmasi from './src/screens/KonfirmasiScreen';
 import ChangePassword from './src/screens/ChangePasswordScreen';
+import CetakLaporan from './src/screens/CetakLaporanScreen';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {AuthContext} from './src/components/Context';
 
@@ -156,6 +157,11 @@ const App = ({navigation}) => {
               <Stack.Screen
                 name="ChangePassword"
                 component={ChangePassword}
+                options={{title: null, headerShown: false}}
+              />
+              <Stack.Screen
+                name="CetakLaporan"
+                component={CetakLaporan}
                 options={{title: null, headerShown: false}}
               />
             </>

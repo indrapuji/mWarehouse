@@ -9,6 +9,8 @@ import {
   TextInput,
   Dimensions,
   KeyboardAvoidingView,
+  Modal,
+  Pressable,
 } from 'react-native';
 import React, {useState, useContext} from 'react';
 import axios from 'axios';
@@ -23,6 +25,8 @@ const Login = ({navigation}) => {
     username: '',
     password: '',
   });
+  const [modalVisible, setModalVisible] = useState(false);
+  const [forgotPasswordUsername, setForgotPasswordUsername] = useState('');
 
   const {signIn} = useContext(AuthContext);
 
@@ -54,6 +58,23 @@ const Login = ({navigation}) => {
       });
   };
 
+  const handleCloseModal = () => {
+    setModalVisible(false);
+    setForgotPasswordUsername('');
+  }
+
+  const handleForgotPassword = () => {
+    setModalVisible(true);
+  }
+  
+  const handleForgotApi = () => {
+    console.log('masuk forgot api');
+    console.log(forgotPasswordUsername);
+    setModalVisible(false);
+    // axios
+    setForgotPasswordUsername('');
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar backgroundColor="#3AB4F2" />
@@ -61,6 +82,41 @@ const Login = ({navigation}) => {
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         style={{flex: 1}}
       >
+        <Modal
+          animationType="slide"
+          transparent={true}
+          visible={modalVisible}
+          onRequestClose={() => {
+            handleCloseModal();
+          }}
+        >
+          <View style={styles.centeredView}>
+            <View style={styles.modalView}>
+              <Text style={styles.modalText}>Masukan Username Anda:</Text>
+              <View style={{flexDirection: 'column', alignItems: 'center', marginTop: 5}}>
+                <TextInput
+                  placeholder="Enter Your Username"
+                  autoCapitalize="none"
+                  style={styles.inputSizeForgot}
+                  onChangeText={text => setForgotPasswordUsername(text)}
+                  value={forgotPasswordUsername}
+                />
+                <Pressable
+                  style={[styles.button, styles.buttonClose, { backgroundColor: 'green', marginBottom: 10, marginTop: 20 }]}
+                  onPress={() => handleForgotApi()}
+                >
+                  <Text style={styles.textStyle}>Submit</Text>
+                </Pressable>
+                <Pressable
+                  style={[styles.button, styles.buttonClose]}
+                  onPress={() => handleCloseModal()}
+                >
+                  <Text style={styles.textStyle}>Cancel</Text>
+                </Pressable>
+              </View>
+            </View>
+          </View>
+        </Modal>
         <View style={{flex: 1, alignItems: 'center'}}>
           <View style={{flex: 1, marginTop: 100}}>
             <Text style={styles.title}>M-Warehouse</Text>
@@ -91,6 +147,10 @@ const Login = ({navigation}) => {
               onChangeText={text => setValue({...value, password: text})}
               value={value.password}
             />
+            <TouchableOpacity style={{ marginBottom: 10, alignItems: 'center' }} onPress={() => handleForgotPassword()}>
+              <Text style={{ color: 'red', fontSize: 15, fontWeight: '700' }}>Forgot Password</Text>
+            </TouchableOpacity>
+
             <TouchableOpacity
               style={styles.bottonSize}
               onPress={() => loginHanddle(value.username, value.password)}
@@ -135,6 +195,16 @@ const styles = StyleSheet.create({
     paddingRight: 50,
     color: 'blue',
   },
+  inputSizeForgot: {
+    width: width - 138,
+    height: 50,
+    borderRadius: 10,
+    marginBottom: 10,
+    backgroundColor: 'grey',
+    paddingLeft: 20,
+    paddingRight: 50,
+    color: 'white',
+  },
   bottonSize: {
     width: width - 50,
     height: 50,
@@ -149,5 +219,54 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 15,
     fontWeight: '700',
+  },
+  centeredView: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 22,
+  },
+  modalView: {
+    width: width - 50,
+    margin: 20,
+    backgroundColor: 'white',
+    borderRadius: 20,
+    padding: 35,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  button: {
+    borderRadius: 10,
+    padding: 10,
+    elevation: 2,
+    marginHorizontal: 10,
+    width: 100
+  },
+  buttonOpen: {
+    backgroundColor: '#F194FF',
+  },
+  confimButton: {
+    backgroundColor: 'green',
+  },
+  buttonClose: {
+    backgroundColor: 'red',
+    width: 223
+  },
+  textStyle: {
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: 'center',
+    color: 'black'
   },
 });

@@ -207,13 +207,13 @@ const Home = ({navigation}) => {
                   <Text
                     style={{
                       color: '#3AB4F2',
-                      fontSize: 24,
+                      fontSize: 22,
                       fontWeight: '700',
                       marginTop: 10,
                       marginLeft: 20,
                     }}
                   >
-                    Menu Kelola User
+                    Menu Kelola Helper
                   </Text>
                 </TouchableOpacity>
                 <TouchableOpacity
@@ -337,6 +337,7 @@ const Home = ({navigation}) => {
                         flexDirection: 'row',
                       }}
                       onPress={() => cetakPDF()}
+                      // onPress={() => navigation.navigate('CetakLaporan')}
                     >
                       <Image source={findUser} style={{width: 100, height: 100}} />
                       <Text
@@ -446,7 +447,8 @@ const Home = ({navigation}) => {
                         marginTop: 20,
                         flexDirection: 'row',
                       }}
-                      onPress={() => cetakPDF()}
+                      // onPress={() => cetakPDF()}
+                      onPress={() => navigation.navigate('CetakLaporan')}
                     >
                       <Image source={findUser} style={{width: 100, height: 100}} />
                       <Text

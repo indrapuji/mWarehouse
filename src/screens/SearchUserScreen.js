@@ -290,7 +290,7 @@ const SearchScreen = ({ navigation }) => {
           </TouchableOpacity>
           <View>
             <Text style={{ fontWeight: '700', fontSize: 20, color: '#3AB4F2' }}>
-              Menu Kelola User
+              Menu Kelola Helper
             </Text>
           </View>
         </View>
