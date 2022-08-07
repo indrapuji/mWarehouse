@@ -24,6 +24,7 @@ const RegisterScreen = ({navigation}) => {
   const [value, setValue] = useState({
     nama: '',
     username: '',
+    email: '',
     role: 'helper',
   });
 
@@ -123,6 +124,16 @@ const RegisterScreen = ({navigation}) => {
                 style={styles.inputSize}
                 onChangeText={text => setValue({...value, username: text})}
                 value={value.username}
+              />
+            </View>
+            <View style={{marginHorizontal: 16, marginTop: 10}}>
+              <Text style={{color: 'black'}}>Email</Text>
+              <TextInput
+                placeholder="email"
+                autoCapitalize="none"
+                style={styles.inputSize}
+                onChangeText={text => setValue({...value, email: text})}
+                value={value.email}
               />
             </View>
           </ScrollView>
