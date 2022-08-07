@@ -67,9 +67,13 @@ const Login = ({navigation}) => {
     setModalVisible(true);
   }
   
-  const handleForgotApi = () => {
+  const handleForgotApi = async () => {
     console.log('masuk forgot api');
     console.log(forgotPasswordUsername);
+    await axios({
+      method: 'GET',
+      url: `${host}/users/forgot-password/${forgotPasswordUsername}`,
+    });
     setModalVisible(false);
     // axios
     setForgotPasswordUsername('');

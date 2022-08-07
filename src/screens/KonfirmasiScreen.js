@@ -292,13 +292,13 @@ import {
                     style={[styles.button, styles.confimButton]}
                     onPress={() => handleModalConfirmation('masuk')}
                     >
-                    <Text style={styles.textStyle}>{barangModal?.dataConfirmMasuk?.length}</Text>
+                    <Text style={styles.textStyle}>{barangModal?.dataConfirmMasuk?.reduce((a, b) => a + (b['jumlah'] || 0), 0)}</Text>
                     </Pressable>
                     <Pressable
                     style={[styles.button, { backgroundColor: 'orange', }]}
                     onPress={() => handleModalConfirmation('keluar')}
                     >
-                    <Text style={styles.textStyle}>{barangModal?.dataConfirmKeluar?.length}</Text>
+                    <Text style={styles.textStyle}>{barangModal?.dataConfirmKeluar?.reduce((a, b) => a + (b['jumlah'] || 0), 0)}</Text>
                     </Pressable>
                 </View>
                   <View style={{flexDirection: 'row', marginTop: 15}}>

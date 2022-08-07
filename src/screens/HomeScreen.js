@@ -56,6 +56,7 @@ const Home = ({navigation}) => {
         <tr>
           <td>${idx+1}</td>
           <td>${barang.barang.nama}</td>
+          <td>${barang.jumlah}</td>
           <td>${barang.user.nama}</td>
           <td>${barang.type === 'masuk' ? 'Masuk' : 'Keluar'}</td>
           <td>${moment(barang.createdAt).format('LLL')}</td>
@@ -100,12 +101,13 @@ const Home = ({navigation}) => {
           <body>
           
             <h2>Laporan Keluar Masuk Barang, ${moment().format('LLL')}</h2>
-            <h2>Total Jumlah Barang: ${data.length}</h2>
+            <h2>Total Jumlah Barang: ${data.reduce((a, b) => a + (b['jumlah'] || 0), 0)}</h2>
             
             <table>
               <tr>
                 <th>No</th>
                 <th>Nama Barang</th>
+                <th>Jumlah Barang</th>
                 <th>Nama User</th>
                 <th>Tipe</th>
                 <th>Tanggal</th>
