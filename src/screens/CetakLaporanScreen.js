@@ -74,6 +74,7 @@ const CetakLaporanScreen = ({navigation}) => {
         url: `${host}/barang/laporan/list?tahun=${year}&bulan=${month}&barangId=${barangId ? barangId : ''}`,
         headers: { token },
       });
+      console.log(data);
       const tableRow = await handleTablePdf(data);
       let options = {
         html: `<!DOCTYPE html>
@@ -99,8 +100,11 @@ const CetakLaporanScreen = ({navigation}) => {
           </head>
           <body>
           
-            <h2>Laporan Keluar Masuk Barang, Bulan ${month} Tahun ${year}</h2>
+            <h2>Laporan Keluar Masuk Barang, Bulan ${moment(new Date()).set('month',month).format('MMMM')} Tahun ${year}</h2>
             <h2>Total Jumlah Barang: ${data.reduce((a, b) => a + (b['jumlah'] || 0), 0)}</h2>
+            <h2>Total Stok Barang: ${data[0].barang.total}</h2>
+            <h2>Total Jumlah Barang Masuk: ${data[0].barang.jumlah_masuk}</h2>
+            <h2>Total Jumlah Barang Keluar: ${data[0].barang.jumlah_keluar}</h2>
             
             <table>
               <tr>

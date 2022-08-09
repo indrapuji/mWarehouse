@@ -100,7 +100,7 @@ const Home = ({navigation}) => {
           </head>
           <body>
           
-            <h2>Laporan Keluar Masuk Barang, ${moment().format('LLL')}</h2>
+            <h2>Laporan Keluar Masuk Barang, Bulan ${moment(new Date()).set('month',month).format('MMMM')} Tahun ${year}</h2>
             <h2>Total Jumlah Barang: ${data.reduce((a, b) => a + (b['jumlah'] || 0), 0)}</h2>
             
             <table>
