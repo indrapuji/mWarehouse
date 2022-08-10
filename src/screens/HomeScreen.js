@@ -22,6 +22,8 @@ import 'moment/locale/id';
 moment.locale('id');
 
 const {width} = Dimensions.get('screen');
+const month = moment().get('month') + 1;
+const year = moment().get('year');
 
 const Home = ({navigation}) => {
   const {signOut} = useContext(AuthContext);
